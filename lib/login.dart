@@ -94,7 +94,6 @@ class _LoginState extends State<Login> {
                       icon: const Icon(Icons.arrow_forward_ios),
                       tooltip: 'Giriş Yap',
                       onPressed: () async {
-
                         setState(() {
                           Navigator.push(
                             context,

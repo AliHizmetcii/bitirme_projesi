@@ -17,6 +17,6 @@ class loginControl {
         
       }
     }
-    return stats;
+    return "stats";
   }
 }
