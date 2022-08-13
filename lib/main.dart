@@ -1,6 +1,9 @@
+import 'dart:ffi';
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
+import 'Model.dart';
 import 'indicator.dart';
 
 void main() {
@@ -13,11 +16,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const MyHomePage(title: 'Flutter Demo Home Page'));
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    );
   }
 }
 
@@ -47,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Colors.blue,
                 ),
                 child: Text(
-                  'Başlık',
+                  'MENU',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 24,
@@ -59,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 title: Text('Mesajlar'),
               ),
               ListTile(
-                leading: Icon(Icons.account_circle),
+                leading: Icon(Icons.person),
                 title: Text('Profil'),
               ),
               ListTile(
@@ -70,13 +74,13 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         body: Padding(
-          padding: const EdgeInsets.fromLTRB(0,10,0,0),
+          padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
           child: DefaultTabController(
             length: 4,
             child: Column(
               children: <Widget>[
                 ButtonsTabBar(
-                  contentPadding:const EdgeInsets.all(12.0),
+                  contentPadding: const EdgeInsets.all(12.0),
                   elevation: 2,
                   backgroundColor: Colors.red,
                   unselectedBackgroundColor: Colors.grey[300],
@@ -102,16 +106,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: TabBarView(
                     children: <Widget>[
                       Center(
-                        child: graph().buildAspectRatio(),
+                        child: Graph().buildAspectRatio(),
                       ),
                       Center(
-                        child: graph().buildAspectRatio(),
+                        child: Graph().buildAspectRatio(),
                       ),
                       Center(
-                        child: graph().buildAspectRatio(),
+                        child: Graph().buildAspectRatio(),
                       ),
                       Center(
-                        child: graph().buildAspectRatio(),
+                        child: Graph().buildAspectRatio(),
                       ),
                     ],
                   ),
@@ -125,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class graph extends State {
+class Graph extends State {
   int touchedIndex = -1;
 
   @override
@@ -178,7 +182,7 @@ class graph extends State {
               children: const <Widget>[
                 Indicator(
                   color: Color(0xff0293ee),
-                  text: 'First',
+                  text: "Elektronik",
                   isSquare: true,
                   textColor: Color(0xff0293ee),
                 ),
@@ -187,7 +191,7 @@ class graph extends State {
                 ),
                 Indicator(
                   color: Color(0xfff8b250),
-                  text: 'Second',
+                  text: "Giyim",
                   isSquare: true,
                   textColor: Color(0xfff8b250),
                 ),
@@ -196,7 +200,7 @@ class graph extends State {
                 ),
                 Indicator(
                   color: Color(0xff845bef),
-                  text: 'Third',
+                  text: "Spor",
                   isSquare: true,
                   textColor: Color(0xff845bef),
                 ),
@@ -205,7 +209,7 @@ class graph extends State {
                 ),
                 Indicator(
                   color: Color(0xff13d38e),
-                  text: 'Fourth',
+                  text: "Ev Eşyaları",
                   isSquare: true,
                   textColor: Color(0xff13d38e),
                 ),
@@ -230,10 +234,13 @@ class graph extends State {
       final radius = isTouched ? 60.0 : 50.0;
       switch (i) {
         case 0:
+          var a = ((100*productModelList[0].productNumber)/(totalProducts));
+          String s= a.toStringAsFixed(2);
+          double d = double.parse(s);
           return PieChartSectionData(
             color: const Color(0xff0293ee),
-            value: 40,
-            title: '40%',
+            value: d,
+            title: '%$d',
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize,
@@ -241,10 +248,13 @@ class graph extends State {
                 color: const Color(0xffffffff)),
           );
         case 1:
+          var a = ((100*productModelList[1].productNumber)/(totalProducts));
+          String s= a.toStringAsFixed(2);
+          double d = double.parse(s);
           return PieChartSectionData(
             color: const Color(0xfff8b250),
-            value: 30,
-            title: '30%',
+            value: d,
+            title: '%$d',
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize,
@@ -252,10 +262,13 @@ class graph extends State {
                 color: const Color(0xffffffff)),
           );
         case 2:
+          var a = ((100*productModelList[2].productNumber)/(totalProducts));
+          String s= a.toStringAsFixed(2);
+          double d = double.parse(s);
           return PieChartSectionData(
             color: const Color(0xff845bef),
-            value: 15,
-            title: '15%',
+            value: d,
+            title:'%$d',
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize,
@@ -263,10 +276,13 @@ class graph extends State {
                 color: const Color(0xffffffff)),
           );
         case 3:
+          var a = ((100*productModelList[3].productNumber)/(totalProducts));
+          String s= a.toStringAsFixed(2);
+          double d = double.parse(s);
           return PieChartSectionData(
             color: const Color(0xff13d38e),
-            value: 15,
-            title: '15%',
+            value: d,
+            title: '%$d',
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize,
@@ -277,11 +293,5 @@ class graph extends State {
           throw Error();
       }
     });
-  }
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
   }
 }

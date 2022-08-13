@@ -1,13 +1,15 @@
 import 'package:bitirme_projesi/main.dart';
 import 'package:flutter/material.dart';
 
+import 'Model.dart';
+
 void main() {
-  runApp(Login());
+  runApp(MaterialApp(home: Login()));
 }
 
 class Login extends StatefulWidget {
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
    Login({Key? key}) : super(key: key);
 
@@ -95,6 +97,10 @@ class _LoginState extends State<Login> {
                       tooltip: 'Giriş Yap',
                       onPressed: () async {
                         setState(() {
+                          addModel(1, "Elektronik", 127);
+                          addModel(2, "Giyim", 235);
+                          addModel(3, "Spor", 190);
+                          addModel(4, "Ev Eşyası", 145);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
