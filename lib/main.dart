@@ -179,41 +179,41 @@ class Graph extends State {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const <Widget>[
+              children: <Widget>[
                 Indicator(
-                  color: Color(0xff0293ee),
-                  text: "Elektronik",
+                  color: const Color(0xff0293ee),
+                  text: productModelList[0].categoryName,
                   isSquare: true,
-                  textColor: Color(0xff0293ee),
+                  textColor: const Color(0xff0293ee),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 4,
                 ),
                 Indicator(
-                  color: Color(0xfff8b250),
-                  text: "Giyim",
+                  color: const Color(0xfff8b250),
+                  text: productModelList[1].categoryName,
                   isSquare: true,
-                  textColor: Color(0xfff8b250),
+                  textColor: const Color(0xfff8b250),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 4,
                 ),
                 Indicator(
-                  color: Color(0xff845bef),
-                  text: "Spor",
+                  color: const Color(0xff845bef),
+                  text:productModelList[2].categoryName,
                   isSquare: true,
-                  textColor: Color(0xff845bef),
+                  textColor: const Color(0xff845bef),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 4,
                 ),
                 Indicator(
-                  color: Color(0xff13d38e),
-                  text: "Ev Eşyaları",
+                  color: const Color(0xff13d38e),
+                  text: productModelList[3].categoryName,
                   isSquare: true,
-                  textColor: Color(0xff13d38e),
+                  textColor: const Color(0xff13d38e),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 18,
                 ),
               ],
